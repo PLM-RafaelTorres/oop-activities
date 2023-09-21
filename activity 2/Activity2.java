@@ -91,7 +91,7 @@ public class Activity2 {
          *      4           Senior          4%
          *      5           Senior          4%
          * 
-         *   other values invalid
+         *   other values Invalid
          */
 
         System.out.print("\n\nEnter student level: ");
@@ -107,7 +107,7 @@ public class Activity2 {
             case 4:
             case 5: System.out.println("Remark: Senior\nDiscount: 4%");
                     break;
-            default: System.out.println("Invalid level");
+            default: System.out.println("Invalid");
         }
     }
 }
