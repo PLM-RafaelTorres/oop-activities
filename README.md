@@ -1,4 +1,4 @@
 # oop-activities
-Members: Bayna, Clarence
-         Deldoc, Rojo Lirio
+Members: Bayna, Clarence <br>
+         Deldoc, Rojo Lirio <br>
          Torres, Rafael Sebastian
