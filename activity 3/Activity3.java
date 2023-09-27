@@ -132,7 +132,7 @@ public class Activity3 {
         {
             char c = strSentence.toLowerCase().charAt(intCounter1);
             if(strVowels.contains(c + ""))
-                mapVowelCount.replace(c, mapVowelCount.get(c) + 1);
+                mapVowelCount.replace(c, mapVowelCount.get(c) + 1);  
         }
 
         mapVowelCount.forEach((charKey, intValue) -> 
