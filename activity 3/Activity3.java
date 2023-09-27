@@ -1,23 +1,25 @@
 import java.util.Scanner;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class Activity3 {
     public static void main(String[] args) {
-        int intTerm = 0, intSum = 0, intLines = 0, intNumber = 0, intReversed = 0;
+        int intCounter1 = 0, intCounter2 = 0, intTerm = 0, intSum = 0, intLines = 0, intNumber = 0, intReversed = 0;
         String strSentence = "", strWord = "";
         final String strVowels = "aeiou";
         boolean blIsPrime = true, blIsPalindrome = true;
-        Map<Character, Integer> map = new HashMap<>();
+        Map<Character, Integer> mapVowelCount = new LinkedHashMap<>();
         Scanner s = new Scanner(System.in);
+
         // 1. Display the sum of the given series given n as the number of terms: 
         // 1 + 3 + 5 + 7 + . . . + 2n -1
         // Ex. Enter n: 3
         //     The sum of the series is 9
+
         System.out.print("Enter n: ");
         intTerm = s.nextInt();
-        for(int i = 1; i <= intTerm; ++i)
-            intSum += 2*i - 1;
+        for(intCounter1 = 1; intCounter1 <= intTerm; ++intCounter1)
+            intSum += 2*intCounter1 - 1;
         
         System.out.println("The sum of the series is " + intSum);
 
@@ -33,9 +35,9 @@ public class Activity3 {
         System.out.print("\nEnter n: ");
         intLines = s.nextInt();
 
-        for(int i = 1; i <= intLines; ++i)
+        for(intCounter1 = 1; intCounter1 <= intLines; ++intCounter1)
         {
-            for(int j = 0; j < i; ++j)
+            for(intCounter2 = 0; intCounter2 < intCounter2; ++intCounter2)
                 System.out.print("*");
             System.out.println();
         }
@@ -44,12 +46,11 @@ public class Activity3 {
         // Ex. Enter n : 13
         //     13 is a prime number
 
-
         System.out.print("\nEnter n: ");
         intNumber = s.nextInt();
 
-        for(int i = 2; i <= Math.sqrt(intNumber) && blIsPrime; ++i)
-            if(intNumber % i == 0)
+        for(intCounter1 = 2; intCounter1 <= Math.sqrt(intNumber) && blIsPrime; ++intCounter1)
+            if(intNumber % intCounter1 == 0)
                 blIsPrime = false;
 
         if(!blIsPrime || intNumber <= 1)
@@ -66,29 +67,82 @@ public class Activity3 {
         //     There are 4 o's.
         //     There is no u.
 
-        s.nextLine();
+        s.nextLine(); // clears Scanner buffer
 
         System.out.print("\nEnter the sentence: ");
         strSentence = s.nextLine();
+
+        /*
+           intCountA = 0, intCountE = 0, intCountI = 0, intCountO = 0, intCountU = 0;
+           for(intCounter1 = 0; intCounter1 < strSentence.length(); ++intCounter1)
+           {
+                char c = strSentence.toLowerCase().charAt(intCounter1);
+                if(c == 'a')
+                    intCountA++;
+                else if(c == 'e')
+                    intCountE++;
+                else if(c == 'i')
+                    intCountI++;
+                else if(c == 'o')
+                    intCountO++;
+                else if(c == 'u')
+                    intCountU++;
+            }
+
+            if(intCountA == 0)
+                System.out.println("There is no a.");
+            else if(intCountA == 1)
+                System.out.println("There is 1 a.");
+            else
+                System.out.println("There are " + intCountA + " a's.");
+            
+            if(intCountE == 0)
+                System.out.println("There is no e.");
+            else if(intCountE == 1)
+                System.out.println("There is 1 e.");
+            else
+                System.out.println("There are " + intCountE + " e's.");
+            
+            if(intCountI == 0)
+                System.out.println("There is no i.");
+            else if(intCountI == 1)
+                System.out.println("There is 1 i.");
+            else
+                System.out.println("There are " + intCountI + " i's.");
+
+            if(intCountO == 0)
+                System.out.println("There is no o.");
+            else if(intCountO == 1)
+                System.out.println("There is 1 o.");
+            else
+                System.out.println("There are " + intCountO + " o's.");
+            
+            if(intCountU == 0)
+                System.out.println("There is no u.");
+            else if(intCountU == 1)
+                System.out.println("There is 1 u.");
+            else
+                System.out.println("There are " + intCountU + " u's.");
+         */
         
-        for(int i = 0; i < strVowels.length(); ++i)
-            map.put(strVowels.charAt(i), 0);
+        for(intCounter1 = 0; intCounter1 < strVowels.length(); ++intCounter1)
+            mapVowelCount.put(strVowels.charAt(intCounter1), 0);
     
-        for(int i = 0; i < strSentence.length(); ++i)
+        for(intCounter1 = 0; intCounter1 < strSentence.length(); ++intCounter1)
         {
-            char c = strSentence.toLowerCase().charAt(i);
+            char c = strSentence.toLowerCase().charAt(intCounter1);
             if(strVowels.contains(c + ""))
-                map.replace(c, map.get(c) + 1);
+                mapVowelCount.replace(c, mapVowelCount.get(c) + 1);
         }
 
-        map.forEach((key, value) -> 
+        mapVowelCount.forEach((charKey, intValue) -> 
         {
-            if(value == 0)
-                System.out.println("There is no " + key + ".");
-            else if(value == 1)
-                System.out.println("There is 1 " + key + ".");
+            if(intValue == 0)
+                System.out.println("There is no " + charKey + ".");
+            else if(intValue == 1)
+                System.out.println("There is 1 " + charKey + ".");
             else
-                System.out.println("There are " + value + " " + key + "'s.");
+                System.out.println("There are " + intValue + " " + charKey + "'s.");
         });
 
         // 5. Display the reversed digit of a given number
@@ -99,7 +153,8 @@ public class Activity3 {
         intNumber = s.nextInt();
         while(intNumber > 0)
         {
-            intReversed  = 10 * intReversed + intNumber % 10;
+            intReversed *= 10;
+            intReversed += intNumber % 10;
             intNumber /= 10; 
         }
         System.out.println("The reversed digit is " + intReversed);
@@ -111,13 +166,15 @@ public class Activity3 {
         //     Enter a word: civil
         //     civil is not a palindrome.
 
-        s.nextLine();
+        s.nextLine(); // clears Scanner buffer
+
         System.out.print("\nEnter a word: ");
         strWord = s.nextLine();
-
-        int i = 0, j = strWord.length() - 1;
-        while(i < j && blIsPalindrome)
-            if(strWord.charAt(i++) != strWord.charAt(j--))
+    
+        intCounter1 = 0;
+        intCounter2 = strWord.length() - 1;
+        while(intCounter1 < intCounter2 && blIsPalindrome)
+            if(strWord.charAt(intCounter1++) != strWord.charAt(intCounter2--))
                 blIsPalindrome = false;
 
         if(blIsPalindrome)
