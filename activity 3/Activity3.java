@@ -7,7 +7,7 @@ public class Activity3 {
         int intTerm = 0, intSum = 0, intLines = 0, intNumber = 0, intReversed = 0;
         String strSentence = "", strWord = "";
         final String strVowels = "aeiou";
-        boolean blIsNotPrime = false, blIsPalindrome = true;
+        boolean blIsPrime = true, blIsPalindrome = true;
         Map<Character, Integer> map = new HashMap<>();
         Scanner s = new Scanner(System.in);
         // 1. Display the sum of the given series given n as the number of terms: 
@@ -48,12 +48,11 @@ public class Activity3 {
         System.out.print("\nEnter n: ");
         intNumber = s.nextInt();
 
-        for(int i = 2; i <= Math.sqrt(intNumber) && !blIsNotPrime; ++i)
-            for(int j = i; j <= intNumber; j+=i)
-                if(j == intNumber)
-                    blIsNotPrime = true;
+        for(int i = 2; i <= Math.sqrt(intNumber) && blIsPrime; ++i)
+            if(intNumber % i == 0)
+                blIsPrime = false;
 
-        if(blIsNotPrime || intNumber <= 1)
+        if(!blIsPrime || intNumber <= 1)
             System.out.println(intNumber + " is not a prime number.");
         else 
             System.out.println(intNumber + " is a prime number.");
@@ -77,7 +76,7 @@ public class Activity3 {
     
         for(int i = 0; i < strSentence.length(); ++i)
         {
-            Character c = strSentence.toLowerCase().charAt(i);
+            char c = strSentence.toLowerCase().charAt(i);
             if(strVowels.contains(c + ""))
                 map.replace(c, map.get(c) + 1);
         }
